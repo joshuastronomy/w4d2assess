@@ -27,19 +27,31 @@ function handValue(hand) {
   for (x = 0; x < hand.length; x++) {
     if (hand[x] === "J" || hand[x] === "Q" || hand[x] ===  "K") {
       handTotal += 10;
-    } else if (hand[x] === "A") {
-      if (handTotal + 11 <= 21) {
-        handTotal += 11;
-      } else {
-        handTotal += 1;
-      }
-    } else {
+    // } else if (hand[x] === "A") {
+    //   if (handTotal + 11 <= 21) {
+    //     handTotal += 11;
+    //   }
+    // else {
+    //     handTotal += 1;
+    //   }
+  } else if (hand[x] === "A") {
+
+  } else {
       handTotal += Number(hand[x]);
     }
   }
-  if (handTotal > 21) {
-    handTotal -= 10;
+
+  for (x = 0; x < hand.length; x++) {
+    if (hand[x] === "A" && handTotal <= 10) {
+      handTotal += 11;
+    } else if (hand[x] ==="A" && handTotal > 10) {
+      handTotal += 1;
+    }
   }
+
+  // if (handTotal > 21) {
+  //   handTotal -= 10;
+  // }
   return handTotal;
 }
 
